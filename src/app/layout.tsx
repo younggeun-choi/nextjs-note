@@ -1,9 +1,16 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { Open_Sans } from "next/font/google";
+import { Nanum_Gothic } from "next/font/google";
 import styles from "./layout.module.css";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
+const sans = Open_Sans({ subsets: ["latin"] });
+// 나눔고딕은 variable font 가 아니기에 옵션 지정 필요
+const gothic = Nanum_Gothic({
+  weight: "700",
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "멋진 제품 사이트",
@@ -17,9 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={sans.className}>
         <header className={styles.header}>
-          <h1>Demo Note</h1>
+          <h1 className={gothic.className}>Demo Note</h1>
           <nav className={styles.nav}>
             <Link href="/products">Products</Link>
             <Link href="/contact">Contact</Link>
