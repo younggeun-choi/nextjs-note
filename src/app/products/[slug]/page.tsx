@@ -1,6 +1,8 @@
 import NotFoundPage from "@/app/not-found";
 import { getProduct, getProducts } from "@/service/products";
+import { redirect } from "next/navigation";
 import Image from "next/image";
+import GoProductsButton from "@/components/GoProductsButton";
 
 export const revalidate = 10; // ISR
 
@@ -20,7 +22,8 @@ export default async function ProductPage({ params: { slug } }: Props) {
   const product = await getProduct(slug);
 
   if (!product) {
-    return NotFoundPage();
+    // return NotFoundPage();
+    redirect("/products");
   }
   return (
     <>
@@ -31,6 +34,7 @@ export default async function ProductPage({ params: { slug } }: Props) {
         width="300"
         height="300"
       />
+      <GoProductsButton />
     </>
   );
 }
